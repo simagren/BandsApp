@@ -1,14 +1,15 @@
 ﻿using BandsApp.Web.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BandsApp.Web.Services
 {
     public class BandService
     {
         List<Band> bands = [
-            new Band { Id = 1, Name = "Rammstein", Description = "A heavy metal band" },
-            new Band { Id = 2, Name = "AC/DC", Description = "Rock n Roll band" },
-            new Band { Id = 3, Name = "Iron Maiden", Description = "Heavy metal band"},
-            new Band { Id = 4, Name = "Kent", Description = "Swedish pop band"}
+            new Band { Id = 1, Name = "Rammstein", Description = "A heavy metal band", ImageUrl = "~/images/rammstein.jpg" },
+            new Band { Id = 2, Name = "AC/DC", Description = "Rock n Roll band", ImageUrl = "Images/acdc.png" },
+            new Band { Id = 3, Name = "Iron Maiden", Description = "Heavy metal band" , ImageUrl = "Images/acdc.png"},
+            new Band { Id = 4, Name = "Kent", Description = "Swedish pop band", ImageUrl = "Images/acdc.png"}
             ];
 
         public Band[] GetAllBands() => bands
