@@ -1,4 +1,4 @@
-﻿@model BandsApp.Web.Models.Band[]
+﻿@model BandsApp.Web.Models.Band
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,12 +6,10 @@
     <title>Bands</title>
 </head>
 <body>
-    <h2>Bands</h2>
+    <h2>Details</h2>
     <ol>
-        @foreach(var item in Model)
-        {
-            <li>@item.Name</li>
-        }
-        </ol>
-    </body>
-    </html>
+        <h2>@Model.Name</h2>
+        <h3>@Model.Description</h3>
+    </ol>
+</body>
+</html>
