@@ -11,6 +11,12 @@
         <h2>@Model.Name</h2>
         <h3>@Model.Description</h3>
         <img src="@Model.ImageUrl" /> 
-    
+        <ul>
+        @foreach (var item in Model.Albums)
+        {
+            <li>@item</li>
+        }
+
+        </ul>
 </body>
 </html>
