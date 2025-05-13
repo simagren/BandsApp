@@ -8,11 +8,10 @@
     <title>Bands</title>
 </head>
 <body>
-
-    <header class="container">
-        <nav>
+    <header style="padding: 2rem 1rem; text-align: center;">
+        <nav style="display: flex; justify-content: space-between; max-width: 800px; margin: 0 auto;">
             <ul>
-                <li><strong>@Model.Name</strong></li>
+                <li><strong><a href="/">Home</a></strong></li>
             </ul>
             <ul>
                 <li><a href="#" data-theme-switcher="light">Light</a></li>
@@ -22,21 +21,21 @@
         <h1>Band Details</h1>
     </header>
 
-    <main class="container">
+    <main style="max-width: 800px; margin: 0 auto; padding: 2rem 1rem;">
         <article>
-            <header>
+            <header style="text-align: center;">
                 <h2>@Model.Name</h2>
                 <p>@Model.Description</p>
+                <figure style="display: flex; flex-direction: column; align-items: center;">
+                    <img src="@Model.ImageUrl"
+                         alt="@Model.Name"
+                         style="width: 300px; height: 200px; object-fit: cover; border-radius: 8px;">
+                </figure>
             </header>
 
-            <figure>
-                <img src="@Model.ImageUrl" alt="@Model.Name" style="max-width:100%;">
-                <figcaption>Press photo</figcaption>
-            </figure>
-
-            <section>
+            <section style="text-align: center;">
                 <h3>Albums</h3>
-                <ul>
+                <ul style="display: inline-block; text-align: left;">
                     @foreach (var album in Model.Albums)
                     {
                         <li>@album</li>
@@ -44,8 +43,9 @@
                 </ul>
             </section>
 
+
             <section>
-                <h3>Video</h3>
+                <h3 style="text-align: center;">Video</h3>
                 <iframe width="100%"
                         height="315"
                         src="@Model.VideoUrl"

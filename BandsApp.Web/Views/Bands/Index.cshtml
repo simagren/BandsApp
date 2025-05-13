@@ -1,5 +1,5 @@
 ﻿@model BandsApp.Web.Models.Band[]
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html data-theme="dark">
 <head>
 
@@ -15,20 +15,30 @@
                 <li><a href="#" data-theme-switcher="dark">Dark</a></li>
             </ul>
         </nav>
-
-    <h1>Bands</h1>
     </header>
-    <main>
 
-    <ol>
-        @foreach(var item in Model)
-        {
-            <li>@item.Name</li>
-        }
+    <main class="container">
+
+        <h1>Bands</h1>
+
+        <ol>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <article style="display: flex; align-items: center; gap: 1rem;">
+                        <img src="@item.ImageUrl" alt="@item.Name" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                        <div>
+                            <h2 style="margin-bottom: 0.25rem;">@item.Name</h2>
+                            <a href="/details/@item.Id">View Details</a>
+                        </div>
+                    </article>
+                </li>
+            }
         </ol>
+
+
     </main>
     <script>
-                // js/minimal-theme-switcher.js
         document.querySelectorAll('[data-theme-switcher]').forEach(link => {
             link.addEventListener('click', e => {
                 e.preventDefault();
@@ -38,12 +48,11 @@
             });
         });
 
-        // Apply saved theme on load
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             document.documentElement.setAttribute('data-theme', savedTheme);
-        }
+        }asdasd
 
     </script>
-    </body>
-    </html>
+</body>
+</html>
