@@ -1,31 +1,78 @@
 ﻿@model BandsApp.Web.Models.Band
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="dark">
 <head>
     <link rel="stylesheet" href="https://unpkg.com/@@picocss/pico@@latest/css/pico.classless.min.css">
+    <meta name="color-scheme" content="light dark">
+
     <title>Bands</title>
 </head>
 <body>
-    <h2>Details</h2>
-    
-        <h2>@Model.Name</h2>
-        <h3>@Model.Description</h3>
-        <img src="@Model.ImageUrl" /> 
-        <ul>
-        @foreach (var item in Model.Albums)
-        {
-            <li>@item</li>
+
+    <header class="container">
+        <nav>
+            <ul>
+                <li><strong>@Model.Name</strong></li>
+            </ul>
+            <ul>
+                <li><a href="#" data-theme-switcher="light">Light</a></li>
+                <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+            </ul>
+        </nav>
+        <h1>Band Details</h1>
+    </header>
+
+    <main class="container">
+        <article>
+            <header>
+                <h2>@Model.Name</h2>
+                <p>@Model.Description</p>
+            </header>
+
+            <figure>
+                <img src="@Model.ImageUrl" alt="@Model.Name" style="max-width:100%;">
+                <figcaption>Press photo</figcaption>
+            </figure>
+
+            <section>
+                <h3>Albums</h3>
+                <ul>
+                    @foreach (var album in Model.Albums)
+                    {
+                        <li>@album</li>
+                    }
+                </ul>
+            </section>
+
+            <section>
+                <h3>Video</h3>
+                <iframe width="100%"
+                        height="315"
+                        src="@Model.VideoUrl"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+            </section>
+        </article>
+    </main>
+
+    <script>
+        document.querySelectorAll('[data-theme-switcher]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const theme = link.getAttribute('data-theme-switcher');
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            });
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
         }
+    </script>
 
-        </ul>
-
-    
-    <iframe 
-        width="560" 
-        height="315" 
-        src="@Model.VideoUrl" 
-        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;   picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-    </iframe>
 </body>
 </html>

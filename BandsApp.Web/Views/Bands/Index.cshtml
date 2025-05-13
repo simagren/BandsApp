@@ -1,17 +1,49 @@
 ﻿@model BandsApp.Web.Models.Band[]
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html data-theme="dark">
 <head>
+
     <link rel="stylesheet" href="https://unpkg.com/@@picocss/pico@@latest/css/pico.classless.min.css">
+    <meta name="color-scheme" content="light dark">
     <title>Bands</title>
 </head>
 <body>
-    <h2>Bands</h2>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" data-theme-switcher="light">Light</a></li>
+                <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+            </ul>
+        </nav>
+
+    <h1>Bands</h1>
+    </header>
+    <main>
+
     <ol>
         @foreach(var item in Model)
         {
             <li>@item.Name</li>
         }
         </ol>
+    </main>
+    <script>
+                // js/minimal-theme-switcher.js
+        document.querySelectorAll('[data-theme-switcher]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const theme = link.getAttribute('data-theme-switcher');
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            });
+        });
+
+        // Apply saved theme on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+
+    </script>
     </body>
     </html>
